@@ -1,0 +1,155 @@
+{
+  "name": "nonmollitia",
+  "version": "1.0.0",
+  "description": "JavaScript expression parsing and evaluation.",
+  "source": "index.ts",
+  "main": "dist/jse-eval.js",
+  "module": "dist/jse-eval.module.js",
+  "unpkg": "dist/jse-eval.umd.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ImmanuelHickle/nonmollitia.git"
+  },
+  "scripts": {
+    "dev": "microbundle watch",
+    "build": "microbundle",
+    "test": "node test.js | tap-spec",
+    "lint": "eslint *.ts",
+    "prepare": "husky install",
+    "ci": "npm run lint && npm run build && npm test",
+    "release": "semantic-release",
+    "release:test": "semantic-release --dry-run --no-cli --debug"
+  },
+  "keywords": [
+    "incidunt",
+    "eval",
+    "alias",
+    "voluptatibus",
+    "quas",
+    "provident",
+    "syntax",
+    "et",
+    "voluptatem",
+    "jsep",
+    "analysis",
+    "amet",
+    "javascript",
+    "safe",
+    "safe-eval",
+    "esprima"
+  ],
+  "author": "ForestAnkunding",
+  "license": "MIT",
+  "dependencies": {
+    "jsep": "^1.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-angular": "^13.1.0",
+    "@jsep-plugin/arrow": "^1.0.1",
+    "@jsep-plugin/assignment": "^1.0.1",
+    "@jsep-plugin/async-await": "^1.0.1",
+    "@jsep-plugin/new": "^1.0.1",
+    "@jsep-plugin/object": "^1.0.1",
+    "@jsep-plugin/regex": "^1.0.1",
+    "@jsep-plugin/spread": "^1.0.1",
+    "@jsep-plugin/template": "^1.0.1",
+    "@jsep-plugin/ternary": "^1.0.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@types/tape": "^4.13.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "microbundle": "^0.13.3",
+    "semantic-release": "^18.0.0",
+    "source-map-support": "^0.5.20",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.3.1",
+    "typescript": "^4.4.3"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "angular",
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          },
+          "writerOpts": {
+            "commitsSort": [
+              "scope",
+              "subject"
+            ]
+          }
+        }
+      ],
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      [
+        "@semantic-release/npm",
+        {
+          "tarballDir": "./"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "./*.tgz",
+              "label": "build"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/ImmanuelHickle/nonmollitia.git/issues"
+  }
+}
